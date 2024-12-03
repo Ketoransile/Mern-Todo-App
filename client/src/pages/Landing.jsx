@@ -41,7 +41,7 @@ const Landing = () => {
           <img
             src={main}
             alt="note image"
-            className="h-auto max-w-xs sm:max-w-md lg:max-w-lg"
+            className="h-auto max-lg:h-64 max-w-xs sm:max-w-md lg:max-w-lg"
           />
           <div className="flex gap-4 pt-14">
             <Link
