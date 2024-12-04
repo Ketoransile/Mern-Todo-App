@@ -1,5 +1,6 @@
 import Logo from "./Logo";
-import backgroundImage from "../assets/backgroundSvg.svg";
+// import backgroundImage from "../assets/backgroundSvg.svg";
+import backgroundImage from "../assets/backgroundImage.png";
 const YourNote = () => {
   return (
     <div
