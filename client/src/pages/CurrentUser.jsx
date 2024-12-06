@@ -16,12 +16,13 @@ const CurrentUser = () => {
     >
       <Header />
       <div className="flex flex-col gap-3 justify-center items-center pt-24 ">
-        <div className="text-xl text-pink-600 font-bold text-center bg-white py-3 px-2 w-96 lg:w-1/3 rounded-md shadow:xl">
+        {/* <div className="text-xl text-pink-600 dark:text-white font-bold text-center bg-white dark:bg-darkSlate py-3 px-2 w-96 lg:w-1/3 rounded-md shadow:xl"> */}
+        <div className="text-xl text-lightPurple dark:text-white font-bold text-center bg-white dark:bg-darkSlate py-3 px-2 w-96 lg:w-1/3 rounded-md shadow:xl">
           Modify User Information
         </div>
         <Form
           method="post"
-          className="flex flex-col gap-4 bg-white px-12 py-12 lg:py-6 w-96 lg:w-1/3 rounded-md shadow-xl "
+          className="flex flex-col gap-4 bg-white dark:bg-darkSlate px-12 py-12 lg:py-6 w-96 lg:w-1/3 rounded-md shadow-xl "
         >
           <FormRow
             type="text"
@@ -51,7 +52,8 @@ const CurrentUser = () => {
           <button
             type="submit"
             // className="text-white font-bold text-xl bg-pink-500 hover:bg-pink-400 rounded-md py-3 px-2  w-96 lg:w-1/3"
-            className="text-white font-bold text-xl bg-pink-500 hover:bg-pink-400 rounded-md py-3 px-2  w-full lg:w-full"
+            // className="text-white font-bold text-xl bg-pink-500 hover:bg-pink-400 rounded-md py-3 px-2  w-full lg:w-full"
+            className="text-white font-bold text-xl bg-lightPurple hover:bg-pink-400 rounded-md py-3 px-2  w-full lg:w-full"
           >
             {isSubmitting ? "Saving Changes..." : " Save Changes"}
           </button>

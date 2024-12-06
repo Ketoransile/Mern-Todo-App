@@ -75,23 +75,29 @@ import { MdDelete } from "react-icons/md";
 
 const Todo = ({ todo, onToggle, onDelete }) => {
   return (
-    <div className="flex justify-between gap-2 lg:gap-4 pb-2 border-b-2 border-b-slate-200 w-full">
+    <div className="flex justify-between gap-2 lg:gap-4 pb-2 border-b-2 border-b-slate-200 dark:border-b-slate-600  w-full">
       <input
         type="checkbox"
         checked={!todo.active} // Checkbox is checked if todo is not active (completed)
         id={todo._id}
-        className="h-6 w-6 rounded-full"
+        // className="h-6 w-6 rounded-full "
+        className="h-6 w-6 text-[#D375B9] bg-white border-2 border-[#D375B9] rounded-full checked:bg-[#D375B9] checked:border-[#D375B9] focus:ring-0"
         onChange={onToggle} // Call the onToggle function passed from TodoList
       />
       <label
         htmlFor={todo._id}
-        className={`w-full ${
-          !todo.active ? "line-through text-slate-500" : "text-slate-800"
+        className={`w-full  ${
+          !todo.active
+            ? "line-through text-slate-500 dark:text-slate-500"
+            : "text-slate-800 dark:text-slate-100"
         }`}
       >
         {todo.content}
       </label>
-      <MdDelete onClick={onDelete} className="text-2xl cursor-pointer" />
+      <MdDelete
+        onClick={onDelete}
+        className="text-2xl cursor-pointer dark:text-white"
+      />
     </div>
   );
 };

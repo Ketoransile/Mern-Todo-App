@@ -33,7 +33,7 @@ const CreateTodoBox = ({ setTodos }) => {
     }
   };
   return (
-    <div className="flex items-center gap-4 p-4 bg-white rounded-md w-96 lg:w-1/3 shadow-xl  ">
+    <div className="flex items-center gap-4 p-4 bg-white dark:bg-darkSlate rounded-md w-96 lg:w-1/3 shadow-xl  ">
       {/* <input
         type="checkbox"
         className="h-6 w-6 rounded-full checked:bg-pink-500 checked:border-pink-500 border-slate-300 border-opacity-50 outline-none"
@@ -43,12 +43,12 @@ const CreateTodoBox = ({ setTodos }) => {
         name="content"
         value={todoInput}
         placeholder="Create a new todo . . ."
-        className="flex-1 text-slate-500 border-none focus:outline-none focus:ring-0 "
+        className="flex-1 text-slate-500 dark:text-white border-none focus:outline-none focus:ring-0 dark:bg-darkSlate "
         onChange={handleInputChange}
       />
       <MdAddTask
         onClick={handleSubmitTodo}
-        className="text-2xl cursor-pointer"
+        className="text-2xl cursor-pointer dark:text-white"
       />
     </div>
   );

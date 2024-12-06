@@ -319,7 +319,7 @@ const TodoList = ({ todos, setTodos }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-6 p-4 bg-white rounded-md w-96 lg:w-1/3 shadow-xl">
+      <div className="flex flex-col items-center gap-6 p-4 bg-white dark:bg-darkSlate rounded-md w-96 lg:w-1/3 shadow-xl">
         {filteredTodoList.map((todo) => (
           <Todo
             key={todo._id}
@@ -328,25 +328,32 @@ const TodoList = ({ todos, setTodos }) => {
             onDelete={() => handleDeleteTodo(todo._id)}
           />
         ))}
-        <div className="flex gap-4 justify-between items-center text-sm text-slate-500 w-full">
-          <h2>{filteredTodoList.length} items left</h2>
-          <div className="lg:flex gap-3 text-slate-700 max-lg:hidden">
+        <div className="flex gap-4 justify-between items-center text-sm text-slate-500 dark:text-white w-full">
+          <h2 className="dark:text-slate-500">
+            {filteredTodoList.length} items left
+          </h2>
+          <div className="lg:flex gap-3 text-slate-700 dark:text-slate-300 max-lg:hidden">
             <button
               onClick={() => setFilter("all")}
-              className={filter === "all" ? "font-bold text-pink-700" : ""}
+              // className={filter === "all" ? "font-bold text-pink-700" : ""}
+              className={filter === "all" ? "font-bold text-lightPurple" : ""}
             >
               All
             </button>
             <button
               onClick={() => setFilter("active")}
-              className={filter === "active" ? "font-bold text-pink-700" : ""}
+              // className={filter === "active" ? "font-bold text-pink-700" : ""}
+              className={
+                filter === "active" ? "font-bold text-lightPurple" : ""
+              }
             >
               Active
             </button>
             <button
               onClick={() => setFilter("completed")}
               className={
-                filter === "completed" ? "font-bold text-pink-700" : ""
+                // filter === "completed" ? "font-bold text-pink-700" : ""
+                filter === "completed" ? "font-bold text-lightPurple" : ""
               }
             >
               Completed
@@ -354,29 +361,32 @@ const TodoList = ({ todos, setTodos }) => {
           </div>
           <button
             onClick={handleClearCompleted}
-            className="text-slate-500 hover:text-slate-700"
+            className="text-slate-500 hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-400"
           >
             Clear Completed
           </button>
         </div>
       </div>
 
-      <div className="flex gap-4 justify-center text-slate-600 bg-white shadow-lg p-4 w-96 rounded-xl lg:hidden">
+      <div className="flex gap-4 justify-center text-slate-600 bg-white dark:bg-darkSlate shadow-lg p-4 w-96 rounded-xl lg:hidden">
         <button
           onClick={() => setFilter("all")}
-          className={filter === "all" ? "font-bold text-pink-500" : ""}
+          // className={filter === "all" ? "font-bold text-pink-500" : ""}
+          className={filter === "all" ? "font-bold text-lightPurple" : ""}
         >
           All
         </button>
         <button
           onClick={() => setFilter("active")}
-          className={filter === "active" ? "font-bold text-pink-500" : ""}
+          // className={filter === "active" ? "font-bold text-pink-500" : ""}
+          className={filter === "active" ? "font-bold text-lightPurple" : ""}
         >
           Active
         </button>
         <button
           onClick={() => setFilter("completed")}
-          className={filter === "completed" ? "font-bold text-pink-500" : ""}
+          // className={filter === "completed" ? "font-bold text-pink-500" : ""}
+          className={filter === "completed" ? "font-bold text-lightPurple" : ""}
         >
           Completed
         </button>

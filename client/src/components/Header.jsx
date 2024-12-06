@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logoPink from "../assets/logoPink.svg";
+import ThemeToggle from "./ThemeToggle";
 import { FaMoon } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import UserMenu from "./UserMenu";
@@ -16,23 +17,29 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between pt-3 pb-3 pl-8 pr-8 bg-white ">
+    <div className="flex justify-between pt-3 pb-3 pl-8 pr-8 bg-white dark:bg-darkPurple">
       <div className="flex gap-3 items-center ">
-        <img src={logoPink} alt="logo image" className="h-8 w-8" />
         <Link
           to="/dashboard"
-          className=" text-xl  lg:text-3xl text-pink-400 font-bold"
+          // className=" text-xl  lg:text-3xl text-pink-400 font-bold"
+          className=" text-xl  lg:text-3xl text-lightPurple font-bold flex gap-4 justify-center items-center"
         >
+          <img src={logoPink} alt="logo image" className="h-8 w-8" />
           Your Notes
         </Link>
       </div>
       <div className="flex gap-6 items-center">
-        <h1 className="text-pink-400 font-bold text-2xl">Ar</h1>
-        <button>
+        {/* <h1 className="text-pink-400 font-bold text-2xl">Ar</h1> */}
+        {/* <button className="text-lightPurple font-bold text-2xl cursor">
+          Ar
+        </button> */}
+        {/* <button>
           <FaMoon className="text-pink-500 text-2xl" />
-        </button>
+        </button> */}
+        <ThemeToggle />
         <button onClick={toggleUserMenu}>
-          <FaUser className="text-pink-500 text-2xl" />
+          {/* <FaUser className="text-pink-500 text-2xl" /> */}
+          <FaUser className="text-lightPurple text-2xl" />
         </button>
       </div>
       {showUserMenu && (

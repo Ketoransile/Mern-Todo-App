@@ -5,10 +5,13 @@ import { ToastContainer } from "react-toastify";
 
 import "./index.css";
 import App from "./App.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-    <ToastContainer position="top-center" />
+    <ThemeProvider>
+      <App />
+      <ToastContainer position="top-center" />
+    </ThemeProvider>
   </StrictMode>
 );

@@ -15,7 +15,10 @@ const Landing = () => {
             {/* <div className="flex gap-6 pt-24 pl-32 items-center"> */}
             <div className="flex gap-6 pt-24  items-center">
               <img src={logo} alt="logo" className="h-12 w-12" />
-              <h1 className="text-4xl text-bold text-pink-700 ">Your Notes</h1>
+              {/* <h1 className="text-4xl text-bold text-pink-700 ">Your Notes</h1> */}
+              <h1 className="text-4xl text-bold text-lightPurple ">
+                Your Notes
+              </h1>
             </div>
             <p className=" text-xl text-slate-500 w-full max-lg:text-center  ">
               Welcome to Your Notes - Your personal space to organize thoughts,
@@ -26,13 +29,15 @@ const Landing = () => {
             <div className="lg:flex lg:gap-4 lg:pt-14">
               <Link
                 to="/register"
-                className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 max-lg:hidden"
+                // className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 max-lg:hidden"
+                className="text-xl text-white rounded-lg py-2 px-3 bg-lightPurple max-lg:hidden"
               >
                 Register
               </Link>
               <Link
                 to="/login"
-                className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 max-lg:hidden"
+                // className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 max-lg:hidden"
+                className="text-xl text-white rounded-lg py-2 px-3 bg-lightPurple max-lg:hidden"
               >
                 Login
               </Link>
@@ -46,13 +51,15 @@ const Landing = () => {
           <div className="flex gap-4 pt-14">
             <Link
               to="/register"
-              className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 lg:hidden"
+              // className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 lg:hidden"
+              className="text-xl text-white rounded-lg py-2 px-3 bg-lightPurple lg:hidden"
             >
               Register
             </Link>
             <Link
               to="/login"
-              className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 lg:hidden"
+              // className="text-xl text-white rounded-lg py-2 px-3 bg-pink-500 lg:hidden"
+              className="text-xl text-white rounded-lg py-2 px-3 bg-lightPurple lg:hidden"
             >
               Login
             </Link>
