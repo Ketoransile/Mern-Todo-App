@@ -227,8 +227,10 @@ import { useEffect, useState } from "react";
 import customFetch from "../utils/customFetch";
 import Todo from "./Todo";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const TodoList = ({ todos, setTodos }) => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
 
@@ -263,11 +265,7 @@ const TodoList = ({ todos, setTodos }) => {
         )
       );
 
-      toast.success(
-        updatedStatus
-          ? "Note marked as Active successfully"
-          : "Note marked as Completed successfully"
-      );
+      toast.success(updatedStatus ? t("activeNote") : t("completedNote"));
     } catch (error) {
       console.error("Error updating the note", error);
       toast.error(error?.response?.data?.msg);
@@ -279,7 +277,7 @@ const TodoList = ({ todos, setTodos }) => {
     try {
       await customFetch.delete(`/notes/${id}`);
       setTodos((prevTodos) => prevTodos.filter((t) => t._id !== id));
-      toast.success("Todo deleted successfully");
+      toast.success(t("deleteSuccessMessage"));
     } catch (error) {
       toast.error(error?.response?.data?.msg);
     }
@@ -290,7 +288,7 @@ const TodoList = ({ todos, setTodos }) => {
     try {
       const completedTodos = todos.filter((todo) => !todo.active);
       if (completedTodos.length === 0) {
-        toast.error("No completed todos found");
+        toast.error(t("noCompleteMessage"));
         return;
       }
       const deleteRequests = completedTodos.map((todo) =>
@@ -299,10 +297,10 @@ const TodoList = ({ todos, setTodos }) => {
       await Promise.all(deleteRequests);
 
       setTodos((prevTodos) => prevTodos.filter((todo) => todo.active));
-      toast.success("All completed todos cleared successfully");
+      toast.success(t("clearTodoSucessMessage"));
     } catch (error) {
       console.error("Error clearing completed todos", error);
-      toast.error("Failed to clear completed todos.");
+      toast.error(t("clearTodoErrorMessage"));
     }
   };
 
@@ -330,7 +328,7 @@ const TodoList = ({ todos, setTodos }) => {
         ))}
         <div className="flex gap-4 justify-between items-center text-sm text-slate-500 dark:text-white w-full">
           <h2 className="dark:text-slate-500">
-            {filteredTodoList.length} items left
+            {filteredTodoList.length} {t("itemsLeft")}
           </h2>
           <div className="lg:flex gap-3 text-slate-700 dark:text-slate-300 max-lg:hidden">
             <button
@@ -338,7 +336,7 @@ const TodoList = ({ todos, setTodos }) => {
               // className={filter === "all" ? "font-bold text-pink-700" : ""}
               className={filter === "all" ? "font-bold text-lightPurple" : ""}
             >
-              All
+              {t("all")}
             </button>
             <button
               onClick={() => setFilter("active")}
@@ -347,7 +345,7 @@ const TodoList = ({ todos, setTodos }) => {
                 filter === "active" ? "font-bold text-lightPurple" : ""
               }
             >
-              Active
+              {t("active")}
             </button>
             <button
               onClick={() => setFilter("completed")}
@@ -356,14 +354,14 @@ const TodoList = ({ todos, setTodos }) => {
                 filter === "completed" ? "font-bold text-lightPurple" : ""
               }
             >
-              Completed
+              {t("completed")}
             </button>
           </div>
           <button
             onClick={handleClearCompleted}
             className="text-slate-500 hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-400"
           >
-            Clear Completed
+            {t("clearCompleted")}
           </button>
         </div>
       </div>
@@ -374,21 +372,21 @@ const TodoList = ({ todos, setTodos }) => {
           // className={filter === "all" ? "font-bold text-pink-500" : ""}
           className={filter === "all" ? "font-bold text-lightPurple" : ""}
         >
-          All
+          {t("all")}
         </button>
         <button
           onClick={() => setFilter("active")}
           // className={filter === "active" ? "font-bold text-pink-500" : ""}
           className={filter === "active" ? "font-bold text-lightPurple" : ""}
         >
-          Active
+          {t("active")}
         </button>
         <button
           onClick={() => setFilter("completed")}
           // className={filter === "completed" ? "font-bold text-pink-500" : ""}
           className={filter === "completed" ? "font-bold text-lightPurple" : ""}
         >
-          Completed
+          C{t("completed")}
         </button>
       </div>
     </>

@@ -3,8 +3,10 @@ import { TiDelete } from "react-icons/ti";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const UserMenu = ({ onClick, user }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleGoBack = () => {
     onClick();
@@ -12,10 +14,10 @@ const UserMenu = ({ onClick, user }) => {
   const handleLogout = async () => {
     try {
       await customFetch.get("/auth/logout");
-      toast.success("Logged Out Successfully");
+      toast.success(t("logoutSuccessMessage"));
       return navigate("/");
     } catch (error) {
-      toast.error("Logout Failed");
+      toast.error(t("logoutFailMessage"));
       return onClick();
     }
   };
@@ -38,21 +40,21 @@ const UserMenu = ({ onClick, user }) => {
                  lg:py-4 lg:px-2 lg:w-full w-72"
       >
         <h2 className="text-lg text-lightPurple font-bold pb-8 lg:pb-2">
-          Hi {user.username}
+          {t("hiText")} {user.username}
         </h2>
         <Link
           to="/dashboard/current-user"
           className="text-white dark:text-black text-lg w-full text-center bg-slate-600 dark:bg-white rounded-md py-2 px-2"
           onClick={onClick}
         >
-          Modify User Info
+          {t("modifyText")}
         </Link>
         <button
           // className="text-white text-lg rounded-md w-full bg-pink-500 font-bold px-2 py-2"
           className="text-white text-lg rounded-md w-full bg-lightPurple font-bold px-2 py-2"
           onClick={handleLogout}
         >
-          Logout
+          {t("logoutText")}
         </button>
       </div>
     </div>

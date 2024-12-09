@@ -8,7 +8,10 @@ import { Link, redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 import { useDashboardContext } from "../pages/Dashboard";
+import { useTranslation } from "react-i18next";
+import LangToggle from "./LangToggle";
 const Header = () => {
+  const { t } = useTranslation();
   const { user } = useDashboardContext();
 
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -25,14 +28,12 @@ const Header = () => {
           className=" text-xl  lg:text-3xl text-lightPurple font-bold flex gap-4 justify-center items-center"
         >
           <img src={logoPink} alt="logo image" className="h-8 w-8" />
-          Your Notes
+          {t("yourNotes")}
         </Link>
       </div>
       <div className="flex gap-6 items-center">
         {/* <h1 className="text-pink-400 font-bold text-2xl">Ar</h1> */}
-        {/* <button className="text-lightPurple font-bold text-2xl cursor">
-          Ar
-        </button> */}
+        <LangToggle />
         {/* <button>
           <FaMoon className="text-pink-500 text-2xl" />
         </button> */}

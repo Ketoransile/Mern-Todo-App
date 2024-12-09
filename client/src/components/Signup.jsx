@@ -1,7 +1,8 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import FormRow from "./FormRow";
-
+import { useTranslation } from "react-i18next";
 const Signup = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -19,19 +20,24 @@ const Signup = () => {
     >
       {/* <h1 className="text-4xl text-pink-600 text-center font-bold   "> */}
       <h1 className="text-4xl text-lightPurple text-center font-bold   ">
-        Signup
+        {t("signup")}
       </h1>
-      <FormRow type="text" name="email" labelText="Email" isAuthForm />
+      <FormRow
+        type="text"
+        name="email"
+        labelText={t("emailLabel")}
+        isAuthForm
+      />
       <FormRow
         type="password"
         name="password"
-        labelText="Password"
+        labelText={t("passwordLabel")}
         isAuthForm
       />
       <FormRow
         type="password"
         name="passwordConfirm"
-        labelText="Confirm Password"
+        labelText={t("confirmPasswordLabel")}
         isAuthForm
       />
       <button
@@ -40,14 +46,14 @@ const Signup = () => {
         // className="bg-pink-500 hover:bg-pink-400 text-center text-white rounded-md  py-2 mt-6"
         className="bg-lightPurple hover:bg-pink-400 text-center text-white rounded-md  py-2 mt-6"
       >
-        Complete signup &rarr;
+        {t("completeSignupText")} &rarr;
       </button>
       <p className="text-center text-slate-500 pt-3">
-        Already have an account?
+        {t("alreadyHaveAccount")}
       </p>
       {/* <Link to="/login" className="text-center text-pink-600 font-bold"> */}
       <Link to="/login" className="text-center text-lightPurple font-bold">
-        Login
+        {t("login")}
       </Link>
     </Form>
   );

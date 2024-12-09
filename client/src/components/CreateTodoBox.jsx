@@ -3,8 +3,10 @@ import { MdAddTask } from "react-icons/md";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CreateTodoBox = ({ setTodos }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [todoInput, setTodoInput] = useState("");
   const handleInputChange = (e) => {
@@ -13,7 +15,7 @@ const CreateTodoBox = ({ setTodos }) => {
   const handleSubmitTodo = async () => {
     const trimmedTodo = todoInput.trim();
     if (!trimmedTodo) {
-      toast.error("Please Enter todo before submitting");
+      toast.error(t("emptyNoteError"));
       return;
     }
     if (trimmedTodo) {
@@ -23,7 +25,7 @@ const CreateTodoBox = ({ setTodos }) => {
         });
         setTodoInput("");
         const newTodo = response.data.note;
-        toast.success("Task added successfully");
+        toast.success(t("createTodoSuccessMessage"));
         setTodos((previous) => [newTodo, ...previous]);
         navigate("/dashboard");
       } catch (error) {
@@ -42,7 +44,7 @@ const CreateTodoBox = ({ setTodos }) => {
         type="text"
         name="content"
         value={todoInput}
-        placeholder="Create a new todo . . ."
+        placeholder={t("createTodoPlaceholder")}
         className="flex-1 text-slate-500 dark:text-white border-none focus:outline-none focus:ring-0 dark:bg-darkSlate "
         onChange={handleInputChange}
       />

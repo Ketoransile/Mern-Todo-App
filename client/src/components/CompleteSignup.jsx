@@ -1,7 +1,9 @@
 import { Form, Link, useLocation, useNavigation } from "react-router-dom";
 import FormRow from "./FormRow";
+import { useTranslation } from "react-i18next";
 
 const CompleteSignup = () => {
+  const { t } = useTranslation();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const location = useLocation();
@@ -10,7 +12,7 @@ const CompleteSignup = () => {
     <Form method="post" className="flex flex-col bg-white p-8 gap-3 w-80 ">
       {/* <h1 className="text-3xl text-pink-600 text-center font-bold "> */}
       <h1 className="text-3xl text-lightPurple text-center font-bold ">
-        Complete Signup
+        {t("completeSignup")}
       </h1>
       <input type="hidden" name="email" value={registerData?.email || ""} />
       <input
@@ -23,12 +25,17 @@ const CompleteSignup = () => {
         name="passwordConfirm"
         value={registerData?.passwordConfirm || ""}
       />
-      <FormRow type="text" name="username" labelText="Username" isAuthForm />
-      <FormRow type="tel" name="phone" labelText="Phone" isAuthForm />
+      <FormRow
+        type="text"
+        name="username"
+        labelText={t("usernameLabel")}
+        isAuthForm
+      />
+      <FormRow type="tel" name="phone" labelText={t("phoneLabel")} isAuthForm />
       <FormRow
         type="number"
         name="birthdayYear"
-        labelText="Birthday Year"
+        labelText={t("birthdayYearLabel")}
         isAuthForm
       />
       <button
@@ -36,20 +43,20 @@ const CompleteSignup = () => {
         // className="bg-pink-500 hover:bg-pink-400 text-center text-white rounded-md  py-2 mt-6"
         className="bg-lightPurple hover:bg-pink-400 text-center text-white rounded-md  py-2 mt-6"
       >
-        {isSubmitting ? `Submitting` : "Complete signup "}
+        {isSubmitting ? t("submitting") : t("completeSignup")}
         {/* Complete signup &rarr; */}
       </button>
       <Link
         to="/register"
         className="bg-slate-400 text-center text-white rounded-md  py-2"
       >
-        Back &larr;
+        {t("back")} &larr;
       </Link>
       <div className="flex items-center gap-4">
-        <p className="text-center text-slate-500 ">Already have an account?</p>
+        <p className="text-center text-slate-500 ">{t("alreadyHaveAccount")}</p>
         {/* <Link to="/login" className="text-center text-pink-600"> */}
         <Link to="/login" className="text-center text-lightPurple">
-          Login
+          {t("login")}
         </Link>
       </div>
     </Form>
