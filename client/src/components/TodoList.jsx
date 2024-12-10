@@ -386,7 +386,7 @@ const TodoList = ({ todos, setTodos }) => {
           // className={filter === "completed" ? "font-bold text-pink-500" : ""}
           className={filter === "completed" ? "font-bold text-lightPurple" : ""}
         >
-          C{t("completed")}
+          {t("completed")}
         </button>
       </div>
     </>
